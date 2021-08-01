@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "olympiansmod:items/bronze_shovel"
+	}
+}

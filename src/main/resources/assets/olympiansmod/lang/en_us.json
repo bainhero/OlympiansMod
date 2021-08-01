@@ -1,0 +1,24 @@
+{
+// Items
+	"item.olympiansmod.anaklusmos": "Anaklusmos",
+	"item.olympiansmod.nectar": "Nectar of the Gods",
+	"item.olympiansmod.bronze_ingot": "Bronze Ingot",
+	"item.olympiansmod.celestial_ingot": "Celestial Bronze Ingot",
+	"item.olympiansmod.bronze_sword": "Bronze Sword",
+	"item.olympiansmod.bronze_pickaxe": "Bronze Pickaxe",
+	"item.olympiansmod.bronze_axe": "Bronze Axe",
+	"item.olympiansmod.bronze_shovel": "Bronze Shovel",
+	"item.olympiansmod.bronze_hoe": "Bronze Hoe",
+	"item.olympiansmod.temp_item": "Temp Item",
+	
+// Effects
+	"effect.olympiansmod.olympian": "Olympian",
+	
+// Item Group
+	"itemGroup.olympians": "Olympians",
+	
+// Blocks
+	"block.olympiansmod.bronze_ore": "Bronze Ore",
+	"block.olympiansmod.bronze_block": "Block of Bronze",
+	"block.olympiansmod.celestial_block": "Block of Celestial Bronze"
+}

@@ -1,0 +1,12 @@
+
+modLoader="javafml" #mandatory
+loaderVersion="[36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+[[mods]] #mandatory
+modId="olympiansmod" #mandatory
+version="1.0.0" #mandatory
+displayName="Olympians Mod" #mandatory
+
+description='''
+Generic.
+'''

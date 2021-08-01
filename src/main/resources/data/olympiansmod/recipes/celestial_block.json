@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        "xxx",
+        "xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "olympiansmod:celestial_ingot"
+        }
+    },
+    "result":
+    {
+        "item": "olympiansmod:celestial_block",
+        "count": 1
+    }
+}

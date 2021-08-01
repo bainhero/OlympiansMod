@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":[{
+    	"item": "olympiansmod:bronze_block"
+    }],
+    "result":
+    {
+        "item": "olympiansmod:bronze_ingot",
+        "count": 9
+    }
+}

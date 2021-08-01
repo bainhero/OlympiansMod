@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "x",
+        "x",
+        "s"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "olympiansmod:bronze_ingot"
+        },
+        "s":
+        {
+            "tag": "forge:rods/wooden"
+        }
+    },
+    "result":
+    {
+        "item": "olympiansmod:bronze_sword",
+        "count": 1
+    }
+}

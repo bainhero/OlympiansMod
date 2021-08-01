@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "olympiansmod:bronze_ore"
+    },
+    "result": "olympiansmod:bronze_ingot",
+    "experience": 2.5,
+    "cookingtime": 300
+}
