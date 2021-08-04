@@ -1,5 +1,6 @@
 package com.bainhero.OlympiansMod;
 
+import com.bainhero.OlympiansMod.common.world.dimension.UnderworldDimension;
 import com.bainhero.OlympiansMod.core.init.BlockInit;
 import com.bainhero.OlympiansMod.core.init.RegistryInit;
 import com.bainhero.OlympiansMod.util.Networking;
@@ -7,6 +8,7 @@ import com.bainhero.OlympiansMod.util.Networking;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -24,6 +26,7 @@ public class OlympiansMod
     public OlympiansMod() {
     	
     	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    	IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
         bus.addListener(this::setup);
         bus.addListener(this::doClientStuff);
@@ -31,14 +34,20 @@ public class OlympiansMod
         RegistryInit.ITEMS.register(bus);
         RegistryInit.EFFECTS.register(bus);
         BlockInit.BLOCKS.register(bus);
+        
+        forgeBus.addListener(EventPriority.NORMAL, UnderworldDimension::worldTick);
 
-
-        MinecraftForge.EVENT_BUS.register(this);
+        forgeBus.register(this);
     }
 
 	private void setup(final FMLCommonSetupEvent event)
     {
     	Networking.registerMessages();
+    	
+    	event.enqueueWork(() ->
+		{
+			UnderworldDimension.setupDimension();
+		});
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
