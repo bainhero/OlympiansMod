@@ -72,13 +72,6 @@ public class PlayerEventHandler {
 		}
 	}
 	
-	@SubscribeEvent
-	public static void onPlayerDeathEvent(PlayerEvent.PlayerRespawnEvent event) {
-		//final PlayerEntity player = event.getPlayer();
-		
-		//player.changeDimension();
-	}
-	
 	public static boolean checkDemigod(PlayerEntity player) {
 		return player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG).getBoolean(NBT_DEMIGOD_KEY);
 	}
