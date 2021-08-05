@@ -20,5 +20,6 @@
 // Blocks
 	"block.olympiansmod.bronze_ore": "Bronze Ore",
 	"block.olympiansmod.bronze_block": "Block of Bronze",
-	"block.olympiansmod.celestial_block": "Block of Celestial Bronze"
+	"block.olympiansmod.celestial_block": "Block of Celestial Bronze",
+	"block.olympiansmod.deep_earth": "Deep Earth"
 }

@@ -18,7 +18,7 @@
 			"disable_mob_generation": true,
 			
 			"default_block": {
-				"Name": "minecraft:stone"
+				"Name": "olympiansmod:deep_earth"
 			},
 			
 			"default_fluid": {

@@ -14,6 +14,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.Properties;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
@@ -56,6 +57,9 @@ public class RegistryInit {
 	
 	public static final RegistryObject<Item> TEMP_ITEM = ITEMS.register("temp_item",
 			() -> new TempItem(new Item.Properties().tab(OlympiansMod.OLYMPIANS_GROUP)));
+	
+	public static final RegistryObject<BlockItem> DEEP_EARTH = ITEMS.register("deep_earth", 
+			() -> new BlockItem(BlockInit.DEEP_EARTH.get(), new Item.Properties().tab(OlympiansMod.OLYMPIANS_GROUP)));
 	
 	// Effects
 	

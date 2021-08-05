@@ -43,4 +43,11 @@ public class BlockInit {
 						.sound(SoundType.METAL)
 						.noOcclusion()
 						.lightLevel((blockState) -> 14)));
+		
+		public static final RegistryObject<Block> DEEP_EARTH = BLOCKS.register("deep_earth", 
+				() -> new Block(AbstractBlock.Properties.of(Material.STONE)
+						.strength(-1.0f, -1.0f)
+						.sound(SoundType.NETHERITE_BLOCK)
+						.harvestLevel(-1)));
 }
+
