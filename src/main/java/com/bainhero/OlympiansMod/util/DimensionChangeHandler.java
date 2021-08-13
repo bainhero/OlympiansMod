@@ -30,8 +30,6 @@ public class DimensionChangeHandler {
 			ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
 			
 			serverPlayer.teleportTo(destination, 0, 128D, 0, 0, 0);
-			
 		}
 	}
-	
 }
