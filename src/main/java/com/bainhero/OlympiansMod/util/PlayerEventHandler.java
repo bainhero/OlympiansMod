@@ -4,6 +4,12 @@ import com.bainhero.OlympiansMod.OlympiansMod;
 import com.bainhero.OlympiansMod.common.effects.OEffectList;
 import com.bainhero.OlympiansMod.common.items.CelestialBronzeBlockItem;
 import com.bainhero.OlympiansMod.common.items.CelestialBronzeItem;
+
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.WitherEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.monster.ElderGuardianEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -11,8 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,10 +27,11 @@ import net.minecraftforge.fml.common.Mod;
 public class PlayerEventHandler {
 	
 	private static final String NBT_DEMIGOD_KEY = "olympiansmod.demigod";
+	private static final String NBT_KARMA_KEY = "olympiansmod.karma";
 	
 	@SubscribeEvent
 	public static void onPlayerJoinEvent(PlayerEvent.PlayerLoggedInEvent event) {
-		
+		double randNum = Math.random();
 		PlayerEntity player = event.getPlayer();
 		if (player instanceof ServerPlayerEntity) {
 			CompoundNBT data = player.getPersistentData();
@@ -36,11 +43,16 @@ public class PlayerEventHandler {
 				persistent = data.getCompound(PlayerEntity.PERSISTED_NBT_TAG);
 			}
 			
-			if (!persistent.contains(NBT_DEMIGOD_KEY)) {
+			if (!persistent.contains(NBT_DEMIGOD_KEY) && randNum <= 0.9d) {
 				persistent.putBoolean(NBT_DEMIGOD_KEY, false);
-				
-				player.sendMessage(new StringTextComponent("Welcome, " + 
-						player.getDisplayName().getString()), player.getUUID());
+				System.out.println("Not a demigod.");
+			} else if (!persistent.contains(NBT_DEMIGOD_KEY) && randNum > 0.9d) {
+				persistent.putBoolean(NBT_DEMIGOD_KEY, true);
+				System.out.println("Demigod.");
+			}
+			
+			if (!persistent.contains(NBT_KARMA_KEY)) {
+				persistent.putInt(NBT_KARMA_KEY, 0);
 			}
 		}
 	}
@@ -72,6 +84,33 @@ public class PlayerEventHandler {
 		}
 	}
 	
+	@SubscribeEvent
+	public static void onLivingDeathEvent(LivingDeathEvent event) {
+		DamageSource source = event.getSource();
+		LivingEntity entity = event.getEntityLiving();
+		
+		if (source.getEntity() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity)source.getEntity();
+			if (!(entity instanceof MonsterEntity)) {
+				if (entity.isBaby()) {
+					addKarma(player, -2);
+				} else {
+					addKarma(player, -1);
+				}
+			} else {
+				if (entity instanceof WitherEntity || entity instanceof EnderDragonEntity) {
+					addKarma(player, 8);
+				} else if (entity instanceof ElderGuardianEntity){
+					addKarma(player, 2);
+				} else {
+					addKarma(player, 1);
+				}
+			}
+		}
+	}
+	
+	// Utility Functions
+	
 	public static boolean checkDemigod(PlayerEntity player) {
 		return player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG).getBoolean(NBT_DEMIGOD_KEY);
 	}
@@ -91,5 +130,18 @@ public class PlayerEventHandler {
 			}
 		}
 		return itemstack;
+	}
+	public static void setKarma(PlayerEntity player, int val) {
+		final CompoundNBT data = player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG);
+		data.putInt(NBT_KARMA_KEY, val);
+	}
+	public static int getKarma(PlayerEntity player) {
+		final CompoundNBT data = player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG);
+		return data.getInt(NBT_KARMA_KEY);
+	}
+	public static void addKarma(PlayerEntity player, int addVal) {
+		final CompoundNBT data = player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG);
+		int currentKarma = data.getInt(NBT_KARMA_KEY);
+		data.putInt(NBT_KARMA_KEY, (currentKarma+addVal));
 	}
 }

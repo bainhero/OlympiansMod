@@ -1,5 +1,8 @@
 package com.bainhero.OlympiansMod;
 
+import com.bainhero.OlympiansMod.common.world.dimension.ElysiumDimension;
+import com.bainhero.OlympiansMod.common.world.dimension.FOADimension;
+import com.bainhero.OlympiansMod.common.world.dimension.FOPDimension;
 import com.bainhero.OlympiansMod.common.world.dimension.UnderworldDimension;
 import com.bainhero.OlympiansMod.core.init.BlockInit;
 import com.bainhero.OlympiansMod.core.init.RegistryInit;
@@ -36,6 +39,9 @@ public class OlympiansMod
         BlockInit.BLOCKS.register(bus);
         
         forgeBus.addListener(EventPriority.NORMAL, UnderworldDimension::worldTick);
+        forgeBus.addListener(EventPriority.NORMAL, FOADimension::worldTick);
+        forgeBus.addListener(EventPriority.NORMAL, FOPDimension::worldTick);
+        forgeBus.addListener(EventPriority.NORMAL, ElysiumDimension::worldTick);
 
         forgeBus.register(this);
     }
@@ -47,6 +53,9 @@ public class OlympiansMod
     	event.enqueueWork(() ->
 		{
 			UnderworldDimension.setupDimension();
+			FOADimension.setupDimension();
+			FOPDimension.setupDimension();
+			ElysiumDimension.setupDimension();
 		});
     }
 

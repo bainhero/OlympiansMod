@@ -1,0 +1,63 @@
+{
+	"type": "olympiansmod:fields_of_asphodel",
+	
+	"generator": {
+		"type": "minecraft:noise",
+		
+		"biome_source": {
+			"seed": 0,
+			"type": "minecraft:fixed",
+			"biome": "minecraft:savanna"
+			
+		},
+		
+		"seed": 0,
+		
+		"settings": {
+			"disable_mob_generation": true,
+			
+			"default_block": {
+				"Name": "olympiansmod:deep_earth"
+			},
+			
+			"default_fluid": {
+			"Properties": {
+				"level": "0"
+			},
+				"Name": "minecraft:water"
+			},
+			"bedrock_roof_position": 0,
+			"bedrock_floor_position": 0,
+			"sea_level": 0,
+			
+			"noise": {
+				"density_factor": 1.0,
+				"density_offset": -0.46,
+				"simplex_surface_noise": false,
+				"bottom_slide": {
+			  		"target": 320,
+			  		"size": 4,
+			  		"offset": -1
+				},
+				"size_horizontal": 1,
+				"size_vertical": 1,
+				"height": 256,
+				"sampling": {
+			  		"xz_scale": 1.0,
+			  		"y_scale": 3.0,
+			  		"xz_factor": 80.0,
+			  		"y_factor": 160.0
+				},
+				"top_slide": {
+			  		"target": 120,
+			  		"size": 3,
+			  		"offset": 0
+				}
+		  	},
+		  	
+		  	"structures": {
+		  		"structures": {}
+		  	}
+		}
+	}
+}
