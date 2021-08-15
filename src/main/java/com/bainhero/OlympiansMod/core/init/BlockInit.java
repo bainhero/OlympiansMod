@@ -1,6 +1,7 @@
 package com.bainhero.OlympiansMod.core.init;
 
 import com.bainhero.OlympiansMod.OlympiansMod;
+import com.bainhero.OlympiansMod.common.blocks.JudgementBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
@@ -49,5 +50,11 @@ public class BlockInit {
 						.strength(-1.0f, -1.0f)
 						.sound(SoundType.NETHERITE_BLOCK)
 						.harvestLevel(-1)));
+		
+		public static final RegistryObject<JudgementBlock> JUDGEMENT = BLOCKS.register("judgement", 
+				() -> new JudgementBlock(AbstractBlock.Properties.of(Material.HEAVY_METAL)
+						.strength(-1.0f, -1.0f)
+						.harvestLevel(-1)
+						.sound(SoundType.ANVIL)));
 }
 

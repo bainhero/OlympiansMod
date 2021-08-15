@@ -1,5 +1,6 @@
 package com.bainhero.OlympiansMod;
 
+import com.bainhero.OlympiansMod.common.commands.RegisterCommandEvent;
 import com.bainhero.OlympiansMod.common.world.dimension.ElysiumDimension;
 import com.bainhero.OlympiansMod.common.world.dimension.FOADimension;
 import com.bainhero.OlympiansMod.common.world.dimension.FOPDimension;
@@ -57,6 +58,8 @@ public class OlympiansMod
 			FOPDimension.setupDimension();
 			ElysiumDimension.setupDimension();
 		});
+    	
+    	MinecraftForge.EVENT_BUS.register(RegisterCommandEvent.class);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

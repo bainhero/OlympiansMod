@@ -25,7 +25,7 @@ public class DimensionChangeHandler {
 		MinecraftServer mcserver = player.getServer();
 		ServerWorld destination = mcserver.getLevel(underworld);
 		
-		if(!event.getPlayer().level.isClientSide() && !player.isPassenger() &&
+		if(!player.level.isClientSide() && !player.isPassenger() &&
 				player.canChangeDimensions() &&
 				!player.isCrouching() && player instanceof ServerPlayerEntity) {
 			

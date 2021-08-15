@@ -7,8 +7,6 @@ import com.bainhero.OlympiansMod.common.items.CelestialBronzeBlockItem;
 import com.bainhero.OlympiansMod.common.items.CelestialBronzeItem;
 import com.bainhero.OlympiansMod.common.items.ModItemTier;
 import com.bainhero.OlympiansMod.common.items.NectarItem;
-import com.bainhero.OlympiansMod.common.items.TempItem;
-
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
@@ -54,11 +52,11 @@ public class RegistryInit {
 	public static final RegistryObject<BlockItem> CELESTIAL_BLOCK = ITEMS.register("celestial_block",
 			() -> new CelestialBronzeBlockItem(BlockInit.CELESTIAL_BLOCK.get(), new Item.Properties().tab(OlympiansMod.OLYMPIANS_GROUP).fireResistant().rarity(Rarity.EPIC)));
 	
-	public static final RegistryObject<Item> TEMP_ITEM = ITEMS.register("temp_item",
-			() -> new TempItem(new Item.Properties().tab(OlympiansMod.OLYMPIANS_GROUP)));
-	
 	public static final RegistryObject<BlockItem> DEEP_EARTH = ITEMS.register("deep_earth", 
 			() -> new BlockItem(BlockInit.DEEP_EARTH.get(), new Item.Properties().tab(OlympiansMod.OLYMPIANS_GROUP)));
+	
+	public static final RegistryObject<BlockItem> JUDGEMENT = ITEMS.register("judgement", 
+			() -> new BlockItem(BlockInit.JUDGEMENT.get(), new Item.Properties().tab(OlympiansMod.OLYMPIANS_GROUP)));
 	
 	// Effects
 	
