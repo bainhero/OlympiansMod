@@ -53,8 +53,10 @@ public class RebirthCommand {
 					double randNum = Math.random();
 					if (randNum <= 0.9d) {
 						PlayerEventHandler.setDemigod(player, false);
+						PlayerEventHandler.setParent(player, "none");
 					} else if (randNum > 0.9) {
 						PlayerEventHandler.setDemigod(player, true);
+						PlayerEventHandler.setParent(player, "zeus");
 					}
 					
 					PlayerEventHandler.setKarma(player, 0);

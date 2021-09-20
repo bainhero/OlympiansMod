@@ -28,6 +28,7 @@ public class PlayerEventHandler {
 	
 	private static final String NBT_DEMIGOD_KEY = "olympiansmod.demigod";
 	private static final String NBT_KARMA_KEY = "olympiansmod.karma";
+	private static final String NBT_PARENT_KEY = "olympiansmod.parent";
 	
 	@SubscribeEvent
 	public static void onPlayerJoinEvent(PlayerEvent.PlayerLoggedInEvent event) {
@@ -46,9 +47,11 @@ public class PlayerEventHandler {
 			if (!persistent.contains(NBT_DEMIGOD_KEY) && randNum <= 0.9d) {
 				persistent.putBoolean(NBT_DEMIGOD_KEY, false);
 				System.out.println("Not a demigod.");
+				persistent.putString(NBT_PARENT_KEY, "none");
 			} else if (!persistent.contains(NBT_DEMIGOD_KEY) && randNum > 0.9d) {
 				persistent.putBoolean(NBT_DEMIGOD_KEY, true);
 				System.out.println("Demigod.");
+				persistent.putString(NBT_PARENT_KEY, "zeus");
 			}
 			
 			if (!persistent.contains(NBT_KARMA_KEY)) {
@@ -143,5 +146,13 @@ public class PlayerEventHandler {
 		final CompoundNBT data = player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG);
 		int currentKarma = data.getInt(NBT_KARMA_KEY);
 		data.putInt(NBT_KARMA_KEY, (currentKarma+addVal));
+	}
+	public static void setParent(PlayerEntity player, String parent) {
+		final CompoundNBT data = player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG);
+		data.putString(NBT_PARENT_KEY, parent);
+	}
+	public static String getParent(PlayerEntity player) {
+		final CompoundNBT data = player.getPersistentData().getCompound(PlayerEntity.PERSISTED_NBT_TAG);
+		return data.getString(NBT_PARENT_KEY);
 	}
 }

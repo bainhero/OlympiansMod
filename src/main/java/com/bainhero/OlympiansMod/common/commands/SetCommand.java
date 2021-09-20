@@ -89,7 +89,11 @@ static int karma(CommandContext<CommandSource> commandContext, PlayerEntity play
 		
 		if (player != null) {
 			PlayerEventHandler.setDemigod(player, demigod);
-			
+			if (demigod) {
+				PlayerEventHandler.setParent(player, "zeus");
+			} else {
+				PlayerEventHandler.setParent(player, "none");
+			}
 			if (entity instanceof PlayerEntity) {
 				
 				commandContext.getSource().getServer().getPlayerList()
@@ -103,7 +107,11 @@ static int karma(CommandContext<CommandSource> commandContext, PlayerEntity play
 				PlayerEntity pEntity = (PlayerEntity) entity;
 				
 				PlayerEventHandler.setDemigod(pEntity, demigod);
-				
+				if (demigod) {
+					PlayerEventHandler.setParent(pEntity, "zeus");
+				} else {
+					PlayerEventHandler.setParent(pEntity, "none");
+				}
 				commandContext.getSource().getServer().getPlayerList()
 				.broadcastMessage(new StringTextComponent(String.format("Demigod status has been updated to %s.", demigod)), ChatType.CHAT, entity.getUUID());
 			} else {

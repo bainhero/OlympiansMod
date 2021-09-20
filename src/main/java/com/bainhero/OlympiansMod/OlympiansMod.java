@@ -1,5 +1,6 @@
 package com.bainhero.OlympiansMod;
 
+import com.bainhero.OlympiansMod.common.OlympianList;
 import com.bainhero.OlympiansMod.common.commands.RegisterCommandEvent;
 import com.bainhero.OlympiansMod.common.world.dimension.ElysiumDimension;
 import com.bainhero.OlympiansMod.common.world.dimension.FOADimension;
@@ -45,6 +46,8 @@ public class OlympiansMod
         forgeBus.addListener(EventPriority.NORMAL, ElysiumDimension::worldTick);
 
         forgeBus.register(this);
+        
+        OlympianList.generateMap();
     }
 
 	private void setup(final FMLCommonSetupEvent event)
