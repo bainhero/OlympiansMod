@@ -9,6 +9,8 @@ import net.minecraft.potion.Effects;
 
 public class OlympianList {
 
+	// Olympians
+	
 	public static final String ZEUS_KEY = "zeus";
 	private static final Olympian ZEUS = new Olympian(new EffectInstance[]{});
 	
